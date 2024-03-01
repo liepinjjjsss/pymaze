@@ -6,6 +6,7 @@ Work in progress...
 git fetch --all  # Get the difference from remote repo
 git add .
 git commit -m "Messege"
+git push origin main
 '''
 
 
