@@ -1,13 +1,9 @@
 import pygame, sys
-<<<<<<< HEAD
 import random
-=======
->>>>>>> 5ad9c170f295a1aca2f96dde1c5224a37f823229
 from maze import Maze
 from player import Player
 from game import Game
 from clock import Clock
-<<<<<<< HEAD
 from POIs import PointOfInterest
 class Main:
     def __init__(self, screen):
@@ -119,7 +115,6 @@ if __name__ == "__main__":
 
     game = Main(screen)
     game.main(window_size, tile_size)
-=======
 
 pygame.init()
 pygame.font.init()
@@ -229,4 +224,3 @@ if __name__ == "__main__":
 
 	game = Main(screen)
 	game.main(window_size, tile_size)
->>>>>>> 5ad9c170f295a1aca2f96dde1c5224a37f823229
