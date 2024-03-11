@@ -1,8 +1,13 @@
 import pygame, sys
+
+from time import sleep
+
+from clock import Clock
 from maze import Maze
 from player import Player
-from game import Game
-from clock import Clock
+from game import Game, Button
+from config import *
+
 
 pygame.init()
 pygame.font.init()
@@ -47,6 +52,32 @@ class Main():
 	
 		pygame.display.flip()
 
+	def intro_screen(self):
+		intro = True
+
+		title = self.font.render('Pymaze', True, (255, 255, 255))
+		title_rect = title.get_rect(x=10, y=10)
+
+		
+		play_button = Button(10, 50, 100, 50, BLACK, WHITE, 'Play', 32)
+
+		while intro:
+			for event in pygame.event.get():
+				if event.type == pygame.QUIT:
+					pygame.quit()
+					sys.exit()
+			mouse_pos = pygame.mouse.get_pos()
+			mouse_pressed = pygame.mouse.get_pressed()
+			if play_button.is_pressed(mouse_pos, mouse_pressed):
+				intro = False
+			
+			#self.screen.blit(self.intro_background, (0, 0))
+			#self.screen.fill(BLACK)
+			self.screen.blit(title, title_rect)
+			self.screen.blit(play_button.image, play_button.rect)
+			self.FPS.tick(60)
+			pygame.display.update()
+
 	# main game loop
 	def main(self, frame_size, tile):
 		cols, rows = frame_size[0] // tile, frame_size[-1] // tile
@@ -57,14 +88,18 @@ class Main():
 
 		maze.generate_maze()
 		clock.start_timer()
+
 		while self.running:
 			self.screen.fill("gray")
 			self.screen.fill( pygame.Color("darkslategray"), (603, 0, 752, 752))
-
+			
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
 					pygame.quit()
 					sys.exit()
+			
+			mouse_pos = pygame.mouse.get_pos()
+			mouse_pressed = pygame.mouse.get_pressed()
 
 			# if keys were pressed still
 			if event.type == pygame.KEYDOWN:
@@ -103,6 +138,8 @@ class Main():
 			self.FPS.tick(60)
 
 
+
+
 if __name__ == "__main__":
 	window_size = (602, 602)
 	screen = (window_size[0] + 150, window_size[-1])
@@ -111,4 +148,6 @@ if __name__ == "__main__":
 	pygame.display.set_caption("Maze")
 
 	game = Main(screen)
+	game.intro_screen()
+	sleep(0.2) # TODO: Fix a bug where programm crashes when the start button is pressed longer than few frames
 	game.main(window_size, tile_size)
