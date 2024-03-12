@@ -104,6 +104,7 @@ class Main():
 	def main(self, frame_size, tile):
 		cols, rows = frame_size[0] // tile, frame_size[-1] // tile
 		maze = Maze(cols, rows)
+		poi = PointsOfInterest(cols, rows)
 		game = Game(maze.grid_cells[-1], tile)
 		player = Player(tile // 3, tile // 3)
 		clock = Clock()
@@ -160,7 +161,7 @@ class Main():
 if __name__ == "__main__":
 	window_size = (602, 602)
 	screen = (window_size[0] + 250, window_size[-1])
-	tile_size = 30
+	tile_size = 60
 	screen = pygame.display.set_mode(screen)
 	pygame.display.set_caption("Maze")
 

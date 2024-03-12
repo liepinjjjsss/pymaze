@@ -1,5 +1,6 @@
 FPS = 60
 FONT = "PressStart.ttf"
+WALL_THICKNESS = 4
 
 WHITE = "#FFF5B2"
 BLACK = "#221D1C"
