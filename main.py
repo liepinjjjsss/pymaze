@@ -1,6 +1,7 @@
-import pygame, sys
+import pygame
 
 from time import sleep
+import sys
 
 from clock import Clock
 from maze import Maze
@@ -49,10 +50,10 @@ class Main():
 	
 		pygame.display.flip()
 
-	def rules(self):
+	def rules(self): # TODO: fix a bug when "Sākt spēli" is pressed and it overlays the intro screen for few frames
 		screen.fill(ORANGE)
 		intro = True
-		title = self.font.render('Hlo', True, BLACK)
+		title = self.font.render('Noteikumi', True, BLACK)
 		title_rect = title.get_rect(x=10, y=10)
 		play_button = Button(10, 60, 350, 50, BLACK, WHITE, 'Sākt spēli', 25)
 
@@ -156,12 +157,10 @@ class Main():
 			self.CLOCK.tick(FPS)
 
 
-
-
 if __name__ == "__main__":
 	window_size = (602, 602)
 	screen = (window_size[0] + 250, window_size[-1])
-	tile_size = 60 # For debuging purposes tile size is not 30
+	tile_size = 30
 	screen = pygame.display.set_mode(screen)
 	pygame.display.set_caption("Maze")
 

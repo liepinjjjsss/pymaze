@@ -1,5 +1,7 @@
 import pygame
+
 from random import choice
+
 from config import BLACK
 
 class Cell:

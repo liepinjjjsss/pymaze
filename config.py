@@ -1,8 +1,3 @@
-# BLACK = "#2A3D45"
-# WHITE = "#DDC9B4"
-# LIGHT_GRAY = "#BCAC0B"
-# DARK_GRAY = "#7A6C5D"
-# RED = "#C17C74"
 FPS = 60
 FONT = "PressStart.ttf"
 

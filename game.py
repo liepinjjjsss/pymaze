@@ -1,8 +1,8 @@
 import pygame
 
-pygame.font.init()
 from config import *
 
+pygame.font.init()
 
 class Game:
 	def __init__(self, goal_cell, tile):
