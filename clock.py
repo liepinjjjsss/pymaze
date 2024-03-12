@@ -1,4 +1,8 @@
-import pygame, time
+import pygame
+
+import time
+
+from config import *
 
 pygame.font.init()
 
@@ -6,8 +10,7 @@ class Clock:
 	def __init__(self):
 		self.start_time = None
 		self.elapsed_time = 0
-		self.font = pygame.font.SysFont("monospace", 35)
-		self.message_color = pygame.Color("yellow")
+		self.font = pygame.font.Font(FONT, 35)
 
 	# Start the timer
 	def start_timer(self):
@@ -22,7 +25,7 @@ class Clock:
 	def display_timer(self):
 		secs = int(self.elapsed_time % 60)
 		mins = int(self.elapsed_time / 60)
-		my_time = self.font.render(f"{mins:02}:{secs:02}", True, self.message_color)
+		my_time = self.font.render(f"{mins:02}:{secs:02}", True, ORANGE)
 		return my_time
 
 	# Stop the timer
