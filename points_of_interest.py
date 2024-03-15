@@ -14,17 +14,14 @@ class PointsOfInterest:
         #self.screen = screen
 
     def draw(self, screen, tile):
-        #for point in self.point_tile:
-        
-        self.x, self.y = tile[0] * TILE_SIZE, tile[-1] * TILE_SIZE
+        self.x = tile[0] * TILE_SIZE + TILE_SIZE / 2
+        self.y = tile[-1] * TILE_SIZE + TILE_SIZE / 2
         pygame.draw.circle(screen, BLACK, (self.x, self.y), POINT_SIZE)
-        #print(self.x, self.y)
+
 
     def generate_points(self):
         for point in range(NUMBER_OF_POINTS):
-            self.point_tile.append((random.randint(0, self.cols), random.randint(0, self.rows)))
-        #print(self.point_tile)
-        #self._draw()
+            self.point_tile.append((random.randint(0, self.cols - 1), random.randint(0, self.rows - 1)))
         return self.point_tile
 
     def remove_point(self, coordnates):

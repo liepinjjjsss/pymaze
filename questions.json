@@ -1,0 +1,14 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "name": "first question",
+            "testbool": true
+        },
+        {
+            "id": 2,
+            "name": "second question",
+            "testbool": false
+        }
+    ]
+}

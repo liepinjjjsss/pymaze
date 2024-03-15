@@ -14,7 +14,7 @@ class Game:
 	# add goal point for player to reach
 	def add_goal_point(self, screen):
 		# adding gate for the goal point
-		img_path = 'img/gate.png'
+		img_path = 'assets/gate.png'
 		img = pygame.image.load(img_path)
 		img = pygame.transform.scale(img, (self.tile, self.tile))
 		screen.blit(img, (self.goal_cell.x * self.tile, self.goal_cell.y * self.tile))
@@ -35,7 +35,7 @@ class Game:
 
 class Button:
 	def __init__(self, x, y, width, height, fg, bg, contnet, fontsize):
-		self.font = pygame.font.Font('PressStart.ttf', fontsize)
+		self.font = pygame.font.Font(FONT, fontsize)
 		self.contnet = contnet
 
 		self.x = x
