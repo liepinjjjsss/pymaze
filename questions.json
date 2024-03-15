@@ -1,14 +1,24 @@
 {
     "questions": [
         {
-            "id": 1,
-            "name": "first question",
-            "testbool": true
+            "question": "Jautājums 1",
+            "answers": [
+                "a",
+                "b",
+                "c",
+                "d"
+            ],
+            "correct answer": "a"
         },
         {
-            "id": 2,
-            "name": "second question",
-            "testbool": false
+            "question": "Jautājums 2",
+            "answers": [
+                "a",
+                "b",
+                "c",
+                "d"
+            ],
+            "correct answer": "a"
         }
     ]
 }

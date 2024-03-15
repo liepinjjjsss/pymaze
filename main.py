@@ -2,6 +2,7 @@ import pygame
 
 from time import sleep
 import sys
+import json
 
 from clock import Clock
 from maze import Maze
@@ -62,9 +63,19 @@ class Main():
 	def rules(self): # TODO: fix a bug when "Sākt spēli" is pressed and it overlays the intro screen for few frames
 		screen.fill(ORANGE)
 		intro = True
-		title = self.font.render('Noteikumi', True, BLACK)
-		title_rect = title.get_rect(x=10, y=10)
+
 		play_button = Button(10, 60, 350, 50, BLACK, WHITE, 'Sākt spēli', 25)
+		rules_title_text = self.font.render('Noteikumi', True, BLACK)
+		rules_title_text_rect = rules_title_text.get_rect(x=10, y=10)
+		rules_text1 = self.font.render('Šajā spēlē galvenais mērķis ir nokļūt līdz', True, BLACK)
+		rules_text1_rect = rules_text1.get_rect(x=10, y=10)
+		rules_text2 = self.font.render('vārtiem, bet lai to izdarītu, vispirms ir', True, BLACK)
+		rules_text3 = self.font.render('jāiegūst visi tortes gabali. Lai iegūtu', True, BLACK)
+		rules_text4 = self.font.render('tortes gabalu, ir jāatbild pareizi uz jautājumu', True, BLACK)
+		rules_text5 = self.font.render('jautājumu. Ja ', True, BLACK)
+		rules_text6 = self.font.render('Izmanto klaviatūras bultas lai pārvietots.', True, BLACK)
+		
+		
 
 		while intro:
 			for event in pygame.event.get():
@@ -76,7 +87,8 @@ class Main():
 			if play_button.is_pressed(mouse_pos, mouse_pressed):
 				intro = False
 
-			self.screen.blit(title, title_rect)
+			self.screen.blit(rules_title_text, rules_title_text_rect)
+			self.screen.blit(rules_title_text, rules_title_text_rect)
 			self.screen.blit(play_button.image, play_button.rect)
 
 			self.CLOCK.tick(FPS)
@@ -85,10 +97,12 @@ class Main():
 	def intro_screen(self):
 		screen.fill(ORANGE)
 		intro = True
-		title = self.font.render('Liepājas dzimšanas dienas torte 2024', True, BLACK)
-		title_rect = title.get_rect(x=10, y=10)
-		play_button = Button(10, 60, 350, 50, BLACK, WHITE, 'Sākt spēli', 25)
-		rules_button = Button(10, 130, 350, 50, BLACK, WHITE, 'Par spēli', 25)
+		title1 = self.font.render('Liepājas dzimšanas dienas torte 2024', True, BLACK)
+		title1_rect = title1.get_rect(x=10, y=10)
+		title2 = self.font.render('No Riharda Novada un Renāra Liepas.', True, BLACK)
+		title2_rect = title2.get_rect(x=10, y=40)
+		play_button = Button(10, 80, 350, 50, BLACK, WHITE, 'Sākt spēli', 25)
+		rules_button = Button(10, 150, 350, 50, BLACK, WHITE, 'Par spēli', 25)
 
 		while intro:
 			for event in pygame.event.get():
@@ -103,7 +117,8 @@ class Main():
 				self.rules()
 				intro = False
 			
-			self.screen.blit(title, title_rect)
+			self.screen.blit(title1, title1_rect)
+			self.screen.blit(title2, title2_rect)
 			self.screen.blit(play_button.image, play_button.rect)
 			self.screen.blit(rules_button.image, rules_button.rect)
 			self.CLOCK.tick(FPS)
@@ -177,7 +192,18 @@ if __name__ == "__main__":
 	screen = pygame.display.set_mode(screen)
 	pygame.display.set_caption("Maze")
 
+	# with open("questions.json", "r", encoding="utf8") as f:
+	# 	data = json.load(f)
+	# questions = data["questions"]
 
+	# answers = questions[0]['answers']
+	# print("Answers:", *answers)
+	# answer = input()
+
+	# if answer == questions[0]['correct answer']:
+	# 	print("Correct")
+	# else:
+	# 	print("Incorrect")
 
 	game = Main(screen)
 	game.intro_screen()
