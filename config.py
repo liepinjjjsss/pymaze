@@ -1,6 +1,9 @@
 FPS = 60
 FONT = "PressStart.ttf"
 WALL_THICKNESS = 4
+TILE_SIZE = 60
+POINT_SIZE = 10 # For now that we don't have cake, we use dots
+NUMBER_OF_POINTS = 5
 
 WHITE = "#FFF5B2"
 BLACK = "#221D1C"

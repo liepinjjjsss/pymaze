@@ -7,7 +7,9 @@ from clock import Clock
 from maze import Maze
 from player import Player
 from game import Game, Button
+from points_of_interest import PointsOfInterest
 from config import *
+
 
 pygame.init()
 pygame.font.init()
@@ -31,14 +33,17 @@ class Main():
 		self.screen.blit(instructions3,(630,362))
 
 	# draws all configs; maze, player, instructions, and time
-	def _draw(self, maze, tile, player, game, clock):
+	def _draw(self, maze, tile, player, game, clock, poi, points):
 		# draw maze
 		[cell.draw(self.screen, tile) for cell in maze.grid_cells]
+
 		# add a goal point to reach
 		game.add_goal_point(self.screen)
+
 		# draw every player movement
 		player.draw(self.screen)
 		player.update()
+
 		# instructions, clock, winning message
 		self.instructions()
 		if self.game_over:
@@ -47,6 +52,10 @@ class Main():
 		else:
 			clock.update_timer()
 		self.screen.blit(clock.display_timer(), (605,200))
+
+		for point in points:
+			poi.draw(screen, point)
+
 	
 		pygame.display.flip()
 
@@ -110,11 +119,14 @@ class Main():
 		clock = Clock()
 
 		maze.generate_maze()
+		points = poi.generate_points()
 		clock.start_timer()
 
 		while self.running:
 			self.screen.fill(WHITE)
 			self.screen.fill( pygame.Color(BROWN), (603, 0, 752, 752))
+
+
 			
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
@@ -154,18 +166,20 @@ class Main():
 				player.up_pressed = False
 				player.down_pressed = False
 
-			self._draw(maze, tile, player, game, clock)
+			self._draw(maze, tile, player, game, clock, poi, points)
 			self.CLOCK.tick(FPS)
 
 
 if __name__ == "__main__":
 	window_size = (602, 602)
 	screen = (window_size[0] + 250, window_size[-1])
-	tile_size = 60
+
 	screen = pygame.display.set_mode(screen)
 	pygame.display.set_caption("Maze")
+
+
 
 	game = Main(screen)
 	game.intro_screen()
 	sleep(0.2) # TODO: Fix a bug where programm crashes when the start button is pressed longer than few frames
-	game.main(window_size, tile_size)
+	game.main(window_size, TILE_SIZE)
