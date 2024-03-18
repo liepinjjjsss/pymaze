@@ -28,6 +28,7 @@ class Main:
         self.CLOCK = pygame.time.Clock()
         self.total_points = 0
         self.questions = load_questions("questions.json")
+        self.question_popup = None
 
     def instructions(self):
         instructions1 = self.font.render('Use', True, self.message_color)
@@ -201,17 +202,27 @@ class Main:
                     if points_gained > 0:  # Check if the player picked up a piece of cake
                         question = select_question(self.questions)
                         self.question_popup = QuestionPopup(self.screen, question)
-                        self.question_popup.show()
-                        pygame.display.flip()  # Update the display to show the question popup
                         player_answer = None  # Reset player's answer
                         while player_answer is None:
+                            self.question_popup.show()  # Display the question popup
+                            pygame.display.flip()  # Update the display to show the question popup
                             player_answer = self.question_popup.check_answer()  # Wait for player's answer
-                        # Handle player's answer here
-                        if player_answer == self.question_popup.correct_answer:
-                            print("Correct")
 
+                        # Determine if the answer is correct or incorrect
+                        is_correct = player_answer == self.question_popup.correct_answer
+                        self.question_popup.set_answer_state(is_correct)
+                        self.question_popup.show()  # Display the feedback based on the answer state
+                        pygame.display.flip()  # Update the display to show the feedback
+
+                        # Delay for one second before closing the popup
+                        start_time = pygame.time.get_ticks()
+                        while pygame.time.get_ticks() - start_time < 1000:  # Wait for 1000 milliseconds (1 second)
+                            pass  # Do nothing during the delay
+
+                        if is_correct:
+                            print("Correct")
                         else:
-                           print("Incorrect")
+                            print("Incorrect")
 
             if game.is_game_over(player):
                 self.game_over = True

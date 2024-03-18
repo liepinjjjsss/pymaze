@@ -31,6 +31,7 @@ class PointsOfInterest:
     def remove_point(self, point):
         if point in self.point_tile:
             self.point_tile.remove(point)
-            self.cake_value = max(0, self.cake_value - 10)  # Decrease cake value by 10 points
-            return 1000  # Return the points gained for picking up the cake
-        return 0  # No points gained if the cake is not found
+            return self.cake_value  # Return the points gained for picking up the cake
+        return 0
+
+
