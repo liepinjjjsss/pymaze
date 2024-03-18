@@ -1,5 +1,4 @@
 import pygame
-
 from time import sleep
 import sys
 import json
@@ -15,197 +14,188 @@ from config import *
 pygame.init()
 pygame.font.init()
 
-class Main():
-	def __init__(self, screen):
-		self.screen = screen
-		self.font = pygame.font.Font(FONT, 20)
-		
-		self.message_color = pygame.Color(GREEN_MINT)
-		self.running = True
-		self.game_over = False
-		self.CLOCK = pygame.time.Clock()
 
-	def instructions(self):
-		instructions1 = self.font.render('Use', True, self.message_color)
-		instructions2 = self.font.render('Arrow Keys', True, self.message_color)
-		instructions3 = self.font.render('to Move', True, self.message_color)
-		self.screen.blit(instructions1,(655,300))
-		self.screen.blit(instructions2,(610,331))
-		self.screen.blit(instructions3,(630,362))
+class Main:
+    def __init__(self, screen):
+        self.screen = screen
+        self.font = pygame.font.Font(FONT, 20)
 
-	# draws all configs; maze, player, instructions, and time
-	def _draw(self, maze, tile, player, game, clock, poi, points):
-		# draw maze
-		[cell.draw(self.screen, tile) for cell in maze.grid_cells]
+        self.message_color = pygame.Color(GREEN_MINT)
+        self.running = True
+        self.game_over = False
+        self.CLOCK = pygame.time.Clock()
 
-		# add a goal point to reach
-		game.add_goal_point(self.screen)
+    def instructions(self):
+        instructions1 = self.font.render('Use', True, self.message_color)
+        instructions2 = self.font.render('Arrow Keys', True, self.message_color)
+        instructions3 = self.font.render('to Move', True, self.message_color)
+        self.screen.blit(instructions1, (655, 300))
+        self.screen.blit(instructions2, (610, 331))
+        self.screen.blit(instructions3, (630, 362))
 
-		# draw every player movement
-		player.draw(self.screen)
-		player.update()
+    # draws all configs; maze, player, instructions, and time
+    def _draw(self, maze, tile, player, game, clock, poi, points):
+        # draw maze
+        [cell.draw(self.screen, tile) for cell in maze.grid_cells]
 
-		# instructions, clock, winning message
-		self.instructions()
-		if self.game_over:
-			clock.stop_timer()
-			self.screen.blit(game.message(),(610,120))
-		else:
-			clock.update_timer()
-		self.screen.blit(clock.display_timer(), (605,200))
+        # add a goal point to reach
+        game.add_goal_point(self.screen)
 
-		for point in points:
-			poi.draw(screen, point)
+        # draw every player movement
+        player.draw(self.screen)
+        player.update()
 
-	
-		pygame.display.flip()
+        # instructions, clock, winning message
+        self.instructions()
+        if self.game_over:
+            clock.stop_timer()
+            self.screen.blit(game.message(), (610, 120))
+        else:
+            clock.update_timer()
+        self.screen.blit(clock.display_timer(), (605, 200))
 
-	def rules(self): # TODO: fix a bug when "Sākt spēli" is pressed and it overlays the intro screen for few frames
-		screen.fill(ORANGE)
-		intro = True
+        for point in points:
+            poi.draw(self.screen, point)
 
-		play_button = Button(10, 60, 350, 50, BLACK, WHITE, 'Sākt spēli', 25)
-		rules_title_text = self.font.render('Noteikumi', True, BLACK)
-		rules_title_text_rect = rules_title_text.get_rect(x=10, y=10)
-		rules_text1 = self.font.render('Šajā spēlē galvenais mērķis ir nokļūt līdz', True, BLACK)
-		rules_text1_rect = rules_text1.get_rect(x=10, y=10)
-		rules_text2 = self.font.render('vārtiem, bet lai to izdarītu, vispirms ir', True, BLACK)
-		rules_text3 = self.font.render('jāiegūst visi tortes gabali. Lai iegūtu', True, BLACK)
-		rules_text4 = self.font.render('tortes gabalu, ir jāatbild pareizi uz jautājumu', True, BLACK)
-		rules_text5 = self.font.render('jautājumu. Ja ', True, BLACK)
-		rules_text6 = self.font.render('Izmanto klaviatūras bultas lai pārvietots.', True, BLACK)
-		
-		
+        pygame.display.flip()
 
-		while intro:
-			for event in pygame.event.get():
-				if event.type == pygame.QUIT:
-					pygame.quit()
-					sys.exit()
-			mouse_pos = pygame.mouse.get_pos()
-			mouse_pressed = pygame.mouse.get_pressed()
-			if play_button.is_pressed(mouse_pos, mouse_pressed):
-				intro = False
+    def rules(self):
+        screen.fill(ORANGE)
+        intro = True
 
-			self.screen.blit(rules_title_text, rules_title_text_rect)
-			self.screen.blit(rules_title_text, rules_title_text_rect)
-			self.screen.blit(play_button.image, play_button.rect)
+        play_button = Button(10, 60, 350, 50, BLACK, WHITE, 'Sākt spēli', 25)
+        rules_title_text = self.font.render('Noteikumi', True, BLACK)
+        rules_title_text_rect = rules_title_text.get_rect(x=10, y=10)
+        rules_text1 = self.font.render('Šajā spēlē galvenais mērķis ir nokļūt līdz', True, BLACK)
+        rules_text1_rect = rules_text1.get_rect(x=10, y=10)
+        rules_text2 = self.font.render('vārtiem, bet lai to izdarītu, vispirms ir', True, BLACK)
+        rules_text3 = self.font.render('jāiegūst visi tortes gabali. Lai iegūtu', True, BLACK)
+        rules_text4 = self.font.render('tortes gabalu, ir jāatbild pareizi uz jautājumu', True, BLACK)
+        rules_text5 = self.font.render('jautājumu. Ja ', True, BLACK)
+        rules_text6 = self.font.render('Izmanto klaviatūras bultas lai pārvietots.', True, BLACK)
 
-			self.CLOCK.tick(FPS)
-			pygame.display.update()
+        while intro:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+            mouse_pos = pygame.mouse.get_pos()
+            mouse_pressed = pygame.mouse.get_pressed()
+            if play_button.is_pressed(mouse_pos, mouse_pressed):
+                intro = False
 
-	def intro_screen(self):
-		screen.fill(ORANGE)
-		intro = True
-		title1 = self.font.render('Liepājas dzimšanas dienas torte 2024', True, BLACK)
-		title1_rect = title1.get_rect(x=10, y=10)
-		title2 = self.font.render('No Riharda Novada un Renāra Liepas.', True, BLACK)
-		title2_rect = title2.get_rect(x=10, y=40)
-		play_button = Button(10, 80, 350, 50, BLACK, WHITE, 'Sākt spēli', 25)
-		rules_button = Button(10, 150, 350, 50, BLACK, WHITE, 'Par spēli', 25)
+            self.screen.blit(rules_title_text, rules_title_text_rect)
+            self.screen.blit(rules_title_text, rules_title_text_rect)
+            self.screen.blit(play_button.image, play_button.rect)
 
-		while intro:
-			for event in pygame.event.get():
-				if event.type == pygame.QUIT:
-					pygame.quit()
-					sys.exit()
-			mouse_pos = pygame.mouse.get_pos()
-			mouse_pressed = pygame.mouse.get_pressed()
-			if play_button.is_pressed(mouse_pos, mouse_pressed):
-				intro = False
-			if rules_button.is_pressed(mouse_pos, mouse_pressed):
-				self.rules()
-				intro = False
-			
-			self.screen.blit(title1, title1_rect)
-			self.screen.blit(title2, title2_rect)
-			self.screen.blit(play_button.image, play_button.rect)
-			self.screen.blit(rules_button.image, rules_button.rect)
-			self.CLOCK.tick(FPS)
-			pygame.display.update()
+            self.CLOCK.tick(FPS)
+            pygame.display.update()
 
-	# main game loop
-	def main(self, frame_size, tile):
-		cols, rows = frame_size[0] // tile, frame_size[-1] // tile
-		maze = Maze(cols, rows)
-		poi = PointsOfInterest(cols, rows)
-		game = Game(maze.grid_cells[-1], tile)
-		player = Player(tile // 3, tile // 3)
-		clock = Clock()
+    def intro_screen(self):
+        screen.fill(ORANGE)
+        intro = True
+        title1 = self.font.render('Liepājas dzimšanas dienas torte 2024', True, BLACK)
+        title1_rect = title1.get_rect(x=10, y=10)
+        title2 = self.font.render('No Riharda Novada un Renāra Liepas.', True, BLACK)
+        title2_rect = title2.get_rect(x=10, y=40)
+        play_button = Button(10, 80, 350, 50, BLACK, WHITE, 'Sākt spēli', 25)
+        rules_button = Button(10, 150, 350, 50, BLACK, WHITE, 'Par spēli', 25)
 
-		maze.generate_maze()
-		points = poi.generate_points()
-		clock.start_timer()
+        while intro:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+            mouse_pos = pygame.mouse.get_pos()
+            mouse_pressed = pygame.mouse.get_pressed()
+            if play_button.is_pressed(mouse_pos, mouse_pressed):
+                intro = False
+            if rules_button.is_pressed(mouse_pos, mouse_pressed):
+                self.rules()
+                intro = False
 
-		while self.running:
-			self.screen.fill(WHITE)
-			self.screen.fill( pygame.Color(BROWN), (603, 0, 752, 752))
+            self.screen.blit(title1, title1_rect)
+            self.screen.blit(title2, title2_rect)
+            self.screen.blit(play_button.image, play_button.rect)
+            self.screen.blit(rules_button.image, rules_button.rect)
+            self.CLOCK.tick(FPS)
+            pygame.display.update()
 
+    # main game loop
+    def main(self, frame_size, tile):
+        cols, rows = frame_size[0] // tile, frame_size[-1] // tile
+        maze = Maze(cols, rows)
+        poi = PointsOfInterest(cols, rows)
+        game = Game(maze.grid_cells[-1], tile)
+        player = Player(tile // 3, tile // 3)
+        clock = Clock()
 
-			
-			for event in pygame.event.get():
-				if event.type == pygame.QUIT:
-					pygame.quit()
-					sys.exit()
+        maze.generate_maze()
+        points = poi.generate_points()
+        clock.start_timer()
 
-			# if keys were pressed still
-			if event.type == pygame.KEYDOWN:
-				if not self.game_over:
-					if event.key == pygame.K_LEFT:
-						player.left_pressed = True
-					if event.key == pygame.K_RIGHT:
-						player.right_pressed = True
-					if event.key == pygame.K_UP:
-						player.up_pressed = True
-					if event.key == pygame.K_DOWN:
-						player.down_pressed = True
-					player.check_move(tile, maze.grid_cells, maze.thickness)
-		
-			# if pressed key released
-			if event.type == pygame.KEYUP:
-				if not self.game_over:
-					if event.key == pygame.K_LEFT:
-						player.left_pressed = False
-					if event.key == pygame.K_RIGHT:
-						player.right_pressed = False
-					if event.key == pygame.K_UP:
-						player.up_pressed = False
-					if event.key == pygame.K_DOWN:
-						player.down_pressed = False
-					player.check_move(tile, maze.grid_cells, maze.thickness)
+        while self.running:
+            self.screen.fill(WHITE)
+            self.screen.fill(pygame.Color(BROWN), (603, 0, 752, 752))
 
-			if game.is_game_over(player):
-				self.game_over = True
-				player.left_pressed = False
-				player.right_pressed = False
-				player.up_pressed = False
-				player.down_pressed = False
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
 
-			self._draw(maze, tile, player, game, clock, poi, points)
-			self.CLOCK.tick(FPS)
+                # if keys were pressed still
+                if event.type == pygame.KEYDOWN:
+                    if not self.game_over:
+                        if event.key == pygame.K_LEFT:
+                            player.left_pressed = True
+                        if event.key == pygame.K_RIGHT:
+                            player.right_pressed = True
+                        if event.key == pygame.K_UP:
+                            player.up_pressed = True
+                        if event.key == pygame.K_DOWN:
+                            player.down_pressed = True
+                        player.check_move(tile, maze.grid_cells, maze.thickness)
+
+                # if pressed key released
+                if event.type == pygame.KEYUP:
+                    if not self.game_over:
+                        if event.key == pygame.K_LEFT:
+                            player.left_pressed = False
+                        if event.key == pygame.K_RIGHT:
+                            player.right_pressed = False
+                        if event.key == pygame.K_UP:
+                            player.up_pressed = False
+                        if event.key == pygame.K_DOWN:
+                            player.down_pressed = False
+                        player.check_move(tile, maze.grid_cells, maze.thickness)
+
+            # Check collision with maze walls
+            player.check_collision(maze.grid_cells, maze.thickness)
+
+            # Check collision with points of interest
+            for point in points:
+                if player.rect.colliderect(pygame.Rect(point[0] * TILE_SIZE, point[1] * TILE_SIZE, TILE_SIZE, TILE_SIZE)):
+                    poi.remove_point(point)
+
+            if game.is_game_over(player):
+                self.game_over = True
+                player.left_pressed = False
+                player.right_pressed = False
+                player.up_pressed = False
+                player.down_pressed = False
+
+            self._draw(maze, tile, player, game, clock, poi, [points])
+            self.CLOCK.tick(FPS)
 
 
 if __name__ == "__main__":
-	window_size = (602, 602)
-	screen = (window_size[0] + 250, window_size[-1])
+    window_size = (602, 602)
+    screen = (window_size[0] + 250, window_size[-1])
 
-	screen = pygame.display.set_mode(screen)
-	pygame.display.set_caption("Maze")
+    screen = pygame.display.set_mode(screen)
+    pygame.display.set_caption("Maze")
 
-	# with open("questions.json", "r", encoding="utf8") as f:
-	# 	data = json.load(f)
-	# questions = data["questions"]
-
-	# answers = questions[0]['answers']
-	# print("Answers:", *answers)
-	# answer = input()
-
-	# if answer == questions[0]['correct answer']:
-	# 	print("Correct")
-	# else:
-	# 	print("Incorrect")
-
-	game = Main(screen)
-	game.intro_screen()
-	sleep(0.2) # TODO: Fix a bug where programm crashes when the start button is pressed longer than few frames
-	game.main(window_size, TILE_SIZE)
+    game = Main(screen)
+    game.intro_screen()
+    sleep(0.2)
+    game.main(window_size, TILE_SIZE)

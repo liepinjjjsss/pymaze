@@ -1,24 +1,125 @@
 {
     "questions": [
         {
-            "question": "Jautājums 1",
+            "title": "Liepājas pēdas Latvijā",
+            "question": "Kurā datumā regulāri notiek orientēšanās spēles 'Liepājas pēdas Latvijā'? ",
             "answers": [
-                "a",
-                "b",
-                "c",
-                "d"
+                "a. 18.marts",
+                "b. 11.novembris",
+                "c. 4.maijs",
+                "d. 17.jūnijs"
+                ],
+            "correct answer": "c"
+        },
+        {
+            "title": "Liepāja - Latvijas galvaspilsēta",
+            "question": "Kurā gadā Liepāja bija Latvijas galvaspilsēta?",
+            "answers": [
+                "a. 1934",
+                "b. 1919",
+                "c. 1945",
+                "d. 1922"
+            ],
+            "correct answer": "b"
+        },
+        {
+            "title": "Izgaismotā Liepāja",
+            "question": "Kam par godu notiek pastaiga 'Izgaismotā Liepāja'?",
+            "answers": [
+                "a. Neatkarības atjaunošanas dienai",
+                "b. Latvijas dzimšanas dienai",
+                "c. Liepājas dzimšanas dienai",
+                "d. Ziemassvētki"
+            ],
+            "correct answer": "c"
+        },
+        {
+            "title": "Izskrien Latviju Liepājā",
+            "question": "Ko cilvēki dara pasākumā 'Izskrien Latviju Liepājā'?",
+            "answers": [
+                "a. Tie izskrien Latvijas kontūru pa Liepājas ielām",
+                "b. Tie Skrien gar Latvijas upuru piemiņas pieminekļiem",
+                "c. Tie no Karostas skrien līdz Ezerkrastam",
+                "d. Tie, pa jūras krastu, skrien tik kilometrus, cik Latvijai togad paliek gadu"
             ],
             "correct answer": "a"
         },
         {
-            "question": "Jautājums 2",
+            "title": "",
+            "question": "",
             "answers": [
-                "a",
-                "b",
-                "c",
-                "d"
+                "a. ",
+                "b. ",
+                "c. ",
+                "d. "
             ],
-            "correct answer": "a"
+            "correct answer": ""
+        },
+        {
+            "title": "",
+            "question": "",
+            "answers": [
+                "a. ",
+                "b. ",
+                "c. ",
+                "d. "
+            ],
+            "correct answer": ""
+        },
+        {
+            "title": "",
+            "question": "",
+            "answers": [
+                "a. ",
+                "b. ",
+                "c. ",
+                "d. "
+            ],
+            "correct answer": ""
+        },
+        {
+            "title": "",
+            "question": "",
+            "answers": [
+                "a. ",
+                "b. ",
+                "c. ",
+                "d. "
+            ],
+            "correct answer": ""
+        },
+        {
+            "title": "",
+            "question": "",
+            "answers": [
+                "a. ",
+                "b. ",
+                "c. ",
+                "d. "
+            ],
+            "correct answer": ""
+        },
+        {
+            "title": "",
+            "question": "",
+            "answers": [
+                "a. ",
+                "b. ",
+                "c. ",
+                "d. "
+            ],
+            "correct answer": ""
+        },
+        {
+            "title": "",
+            "question": "",
+            "answers": [
+                "a. ",
+                "b. ",
+                "c. ",
+                "d. "
+            ],
+            "correct answer": ""
         }
     ]
 }
