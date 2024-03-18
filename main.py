@@ -9,6 +9,8 @@ from player import Player
 from game import Game, Button
 from points_of_interest import PointsOfInterest
 from config import *
+from question_data import *
+from question_popup import QuestionPopup
 
 
 pygame.init()
@@ -24,6 +26,8 @@ class Main:
         self.running = True
         self.game_over = False
         self.CLOCK = pygame.time.Clock()
+        self.total_points = 0
+        self.questions = load_questions("questions.json")
 
     def instructions(self):
         instructions1 = self.font.render('Use', True, self.message_color)
@@ -34,6 +38,11 @@ class Main:
         self.screen.blit(instructions3, (630, 362))
 
     # draws all configs; maze, player, instructions, and time
+    def _draw_score(self):
+        score_text = self.font.render(f"Score: {self.total_points}", True, WHITE)
+        score_rect = score_text.get_rect()
+        score_rect.topleft = (610, 10)  # Set the top-left corner of the text to (10, 10)
+        self.screen.blit(score_text, score_rect)
     def _draw(self, maze, tile, player, game, clock, poi, points):
         # draw maze
         [cell.draw(self.screen, tile) for cell in maze.grid_cells]
@@ -56,6 +65,8 @@ class Main:
 
         for point in points:
             poi.draw(self.screen, point)
+
+        self._draw_score()
 
         pygame.display.flip()
 
@@ -133,6 +144,9 @@ class Main:
         maze.generate_maze()
         points = poi.generate_points()
         clock.start_timer()
+        decrease_timer = pygame.time.get_ticks()
+
+        displaying_question = False
 
         while self.running:
             self.screen.fill(WHITE)
@@ -172,10 +186,32 @@ class Main:
             # Check collision with maze walls
             player.check_collision(maze.grid_cells, maze.thickness)
 
+            current_time = pygame.time.get_ticks()
+            if current_time - decrease_timer >= 50:  # Decrease every 1000 milliseconds (1 second)
+                decrease_timer = current_time
+                poi.decrease_cake_value()
+
             # Check collision with points of interest
+
             for point in points:
-                if player.rect.colliderect(pygame.Rect(point[0] * TILE_SIZE, point[1] * TILE_SIZE, TILE_SIZE, TILE_SIZE)):
-                    poi.remove_point(point)
+                if player.rect.colliderect(
+                        pygame.Rect(point[0] * TILE_SIZE, point[1] * TILE_SIZE, TILE_SIZE, TILE_SIZE)):
+                    points_gained = poi.remove_point(point)
+                    self.total_points += points_gained  # Update total points
+                    if points_gained > 0:  # Check if the player picked up a piece of cake
+                        question = select_question(self.questions)
+                        self.question_popup = QuestionPopup(self.screen, question)
+                        self.question_popup.show()
+                        pygame.display.flip()  # Update the display to show the question popup
+                        player_answer = None  # Reset player's answer
+                        while player_answer is None:
+                            player_answer = self.question_popup.check_answer()  # Wait for player's answer
+                        # Handle player's answer here
+                        if player_answer == self.question_popup.correct_answer:
+                            print("Correct")
+
+                        else:
+                           print("Incorrect")
 
             if game.is_game_over(player):
                 self.game_over = True

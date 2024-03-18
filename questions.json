@@ -9,7 +9,7 @@
                 "c. 4.maijs",
                 "d. 17.jūnijs"
                 ],
-            "correct answer": "c"
+            "correct_answer": "c"
         },
         {
             "title": "Liepāja - Latvijas galvaspilsēta",
@@ -20,7 +20,7 @@
                 "c. 1945",
                 "d. 1922"
             ],
-            "correct answer": "b"
+            "correct_answer": "b"
         },
         {
             "title": "Izgaismotā Liepāja",
@@ -31,7 +31,7 @@
                 "c. Liepājas dzimšanas dienai",
                 "d. Ziemassvētki"
             ],
-            "correct answer": "c"
+            "correct_answer": "c"
         },
         {
             "title": "Izskrien Latviju Liepājā",
@@ -42,84 +42,8 @@
                 "c. Tie no Karostas skrien līdz Ezerkrastam",
                 "d. Tie, pa jūras krastu, skrien tik kilometrus, cik Latvijai togad paliek gadu"
             ],
-            "correct answer": "a"
-        },
-        {
-            "title": "",
-            "question": "",
-            "answers": [
-                "a. ",
-                "b. ",
-                "c. ",
-                "d. "
-            ],
-            "correct answer": ""
-        },
-        {
-            "title": "",
-            "question": "",
-            "answers": [
-                "a. ",
-                "b. ",
-                "c. ",
-                "d. "
-            ],
-            "correct answer": ""
-        },
-        {
-            "title": "",
-            "question": "",
-            "answers": [
-                "a. ",
-                "b. ",
-                "c. ",
-                "d. "
-            ],
-            "correct answer": ""
-        },
-        {
-            "title": "",
-            "question": "",
-            "answers": [
-                "a. ",
-                "b. ",
-                "c. ",
-                "d. "
-            ],
-            "correct answer": ""
-        },
-        {
-            "title": "",
-            "question": "",
-            "answers": [
-                "a. ",
-                "b. ",
-                "c. ",
-                "d. "
-            ],
-            "correct answer": ""
-        },
-        {
-            "title": "",
-            "question": "",
-            "answers": [
-                "a. ",
-                "b. ",
-                "c. ",
-                "d. "
-            ],
-            "correct answer": ""
-        },
-        {
-            "title": "",
-            "question": "",
-            "answers": [
-                "a. ",
-                "b. ",
-                "c. ",
-                "d. "
-            ],
-            "correct answer": ""
+            "correct_answer": "a"
         }
+
     ]
 }
