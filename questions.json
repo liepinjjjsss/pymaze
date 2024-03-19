@@ -43,7 +43,217 @@
                 "d. Tie, pa jūras krastu, skrien tik kilometrus, cik Latvijai togad paliek gadu"
             ],
             "correct_answer": "a"
+        },
+        {
+            "title": "Izskrien Latviju Liepājā",
+            "question": "Kādi cilvēki var piedalīties izskrien liepāju?",
+            "answers": [
+                "a. Tikai pieaugušie",
+                "b. Tikai uzaicinātie",
+                "c. Pasākuma vadītāji un to ģimenes",
+                "d. Pilnīgi visi, kuri vēlas"
+            ],
+            "correct_answer": "d"
+        },
+        {
+            "title": "Liepāja un Eiropa",
+            "question": "Par kura gada Eiropas kultūras galvaspilsētu ir pasludināta Liepāja?",
+            "answers": [
+                "a. 2027",
+                "b. 2024",
+                "c. 2028",
+                "d. 2025"
+            ],
+            "correct_answer": "a"
+        },
+        {
+            "title": "Izskrien Latviju Liepājā",
+            "question": "Cik garš ir 'Izskrien Latviju Liepājā' maršruts",
+            "answers": [
+                "a. 8.5km",
+                "b. 106km",
+                "c. 21km",
+                "d. 42km"
+            ],
+            "correct_answer": "a"
+        },
+        {
+            "title": "Liepājas pēdas Latvijā",
+            "question": "Kādu svētku piemiņai tiek organizēts pasākums 'Liepājas pēdas Latvijā'?",
+            "answers": [
+                "a. Starptautiskā bērnu aizsardzības diena ",
+                "b. Eiropas diena",
+                "c. Latvijas Republikas Neatkarības atjaunošanas diena",
+                "d. Cēsu kauju atceres diena"
+            ],
+            "correct_answer": "c"
+        },
+        {
+            "title": "Liepājas izcilākie mūziķi",
+            "question": "Kura no šīm grupām nav nākusi no Liepājas?",
+            "answers": [
+                "a. Remix",
+                "b. Tumsa",
+                "c. Credo",
+                "d. Musiqq"
+            ],
+            "correct_answer": "a"
+        },
+        {
+            "title": "Liepājas tramvajs",
+            "question": "Kurš fakts par Liepājas tramvaju nav patiess?",
+            "answers": [
+                "a. Liepāja bija pirmā pilsēta visā Baltijā, kur sāka kursēt tramvajs",
+                "b. Kopējais maršruta līnijas garums ir 14,8 kilometri",
+                "c. Kopējais tramvaju pieturu skaits ir 36",
+                "d. Kopējais pasažieru skaits 2019. gadā bija ap 1,9 miljoniem"
+            ],
+            "correct_answer": "d"
+        },
+        {
+            "title": "Liepājas festivāli",
+            "question": "Kurš mākslinieks nebija redzams uz Liepājas pēdas Latvijā skatuves?",
+            "answers": [
+                "a. Aija Andrejeva",
+                "b. Zigfrīds Muktupāvels",
+                "c. Ivo Fomins",
+                "d. Jānis Aišpurs"
+            ],
+            "correct_answer": "c"
+        },
+        {
+            "title": "Liepājas menciņš",
+            "question": "Kuros no šīm vietām nevar nogaršot “Liepājas menciņu”",
+            "answers": [
+                "a. Picērijā 'Čilli Pizza' Klaipēdas ielā",
+                "b. Restoranā 'Pastnieka mājā'",
+                "c. Restorānā 'Olive'",
+                "d. Visos iepriekš minētajos restorānos ir nogaršojams 'Liepājas menciņš'"
+            ],
+            "correct_answer": "d"
+        },
+        {
+            "title": "Liepājas festivāli",
+            "question": "Kurš no šiem festivāliem ik gadu notiek Liepājā?",
+            "answers": [
+                "a. Positivus",
+                "b. Summer Sound",
+                "c. Holi Music Festival",
+                "d. Under"
+            ],
+            "correct_answer": "b"
+        },
+        {
+            "title": "Liepājas Izcilākie Mūziķi",
+            "question": "Kurš no šiem mūziķiem/grupām 2023 gada vasarā savā koncertā, Liepājā, savāca vairāk nekā 25tūkst. cilvēku?",
+            "answers": [
+                "a. Musiqq",
+                "b. Prāta Vētra",
+                "c. Ivo Fomins",
+                "d. Grupa 2101"
+            ],
+            "correct_answer": "b"
+        },
+        {
+            "title": "Liepāja - kā pa notīm",
+            "question": "Kurš no apskates obektiem nav iekļauts Liepāja - kā pa notīm?",
+            "answers": [
+                "a. Pētertirgus",
+                "b. Sv. Trīsvienības katedrāle",
+                "c. Koncertzāle - Lielais Dzintars",
+                "d. Piemineklis - Vēja Māte"
+            ],
+            "correct_answer": "d"
+        },
+        {
+            "title": "Liepāja - kā pa notīm",
+            "question": "Lai iepazītu Liepājas centru bruģī ir iestrādāti simboli, kuriem sekojot var iziet pastaigu maršrutu. Kas ir šie simboli?\n",
+            "answers": [
+                "a. Ķepu nospiedumi",
+                "b. Notis",
+                "c. Zobeni",
+                "d. Ziedi"
+            ],
+            "correct_answer": "b"
+        },
+        {
+            "title": "Liepājas Tramvajs",
+            "question": "Kāda tradīcija katru gadu tiek piekopta Liepājas dzimšnas dienā?",
+            "answers": [
+                "a. Lielās tortes griešana",
+                "b. Skrējiens apkārt Liepājai",
+                "c. Sabiedrisko transportu var izmantot par brīvu",
+                "d. Tirdzniecības namā 'Kurzeme' visām precēm 30% atlaide"
+            ],
+            "correct_answer": "c"
+        },
+        {
+            "title": "Liepājas Menciņš",
+            "question": "Kas ir Liepājas menciņš?",
+            "answers": [
+                "a. Liepājas oficiālais ēdiens",
+                "b. Slavens Liepājas restorāns",
+                "c. Baltijas jūras zivju suga",
+                "d. Liepājas pirmais mērs"
+            ],
+            "correct_answer": "a"
+        },
+        {
+            "title": "Liepājas Menciņš",
+            "question": "Kur tradicionāli pasniedz Liepājas menciņu?",
+            "answers": [
+                "a. Krūzē",
+                "b. Katliņā",
+                "c. Gliemežvākā",
+                "d. Podiņā"
+            ],
+            "correct_answer": "d"
+        },
+        {
+            "title": "Liepājas Tramvajs",
+            "question": "Liepāja ir viena no trīs pilsētām Latvijā, kur kursē tramvajs. Kas ir viena no divām pārējām?",
+            "answers": [
+                "a. Jēkabpils",
+                "b. Daugavpils",
+                "c. Jelgava",
+                "d. Vetspils"
+            ],
+            "correct_answer": "b"
+        },
+        {
+            "title": "Liepājas Tramvajs",
+            "question": "Kāds ir liepājas tramvaja maršruta līnijas kopgarums?",
+            "answers": [
+                "a. 11.3 km",
+                "b. 17.2 km",
+                "c. 14.8 km",
+                "d. 20.9km"
+            ],
+            "correct_answer": "c"
+        },
+        {
+            "title": "Līvas Ciems",
+            "question": "Kur notiek Līvas ciema svētki?",
+            "answers": [
+                "a. Zvejnieku alejā",
+                "b. Līvas laukumā",
+                "c. Pasta ielā",
+                "d. Purvciemā"
+            ],
+            "correct_answer": "a"
+        },
+        {
+            "title": "Liepājas Teātris",
+            "question": "Kurā gadā tika atvērts Liepājas Teātris?",
+            "answers": [
+                "a. 1905",
+                "b. 1969",
+                "c. 1907",
+                "d. 1889"
+            ],
+            "correct_answer": "c"
         }
+
 
     ]
 }
