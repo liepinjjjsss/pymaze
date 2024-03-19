@@ -29,7 +29,7 @@ class Game:
             screen.blit(img, (self.goal_cell.x * self.tile, self.goal_cell.y * self.tile))
 
     def message(self):
-        return self.font.render('You Win!!', True, ORANGE)
+        return self.font.render('Tu uzvarēji!!', True, ORANGE)
 
     def is_game_over(self, player):
         goal_cell_abs_x, goal_cell_abs_y = self.goal_cell.x * self.tile, self.goal_cell.y * self.tile

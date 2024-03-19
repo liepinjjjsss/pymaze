@@ -140,6 +140,11 @@ class Main:
             self.CLOCK.tick(FPS)
             pygame.display.update()
 
+    def end_screen(self):
+        self.screen.blit(self.font.render('Tu uzvarēji!!', True, ORANGE), (610, 120))
+        pygame.display.flip()
+        pygame.time.wait(2000)
+
     # main game loop
     def main(self, frame_size, tile):
         cols, rows = frame_size[0] // tile, frame_size[-1] // tile
@@ -234,9 +239,9 @@ class Main:
                             pass  # Do nothing during the delay
 
                         if is_correct:
-                            print("Correct")
+                            print("Pareizi")
                         else:
-                            print("Incorrect")
+                            print("Nepareizi")
 
             poi.decrease_cake_value()
 
@@ -248,13 +253,15 @@ class Main:
                     player.right_pressed = False
                     player.up_pressed = False
                     player.down_pressed = False
-                    self.screen.blit(game.message(), (610, 120))
-                    pygame.display.flip()
-                    pygame.time.wait(2000)
+
+                    self.end_screen()
+
                     self.running = False
 
             self._draw(maze, TILE_SIZE, player, game, clock, poi, [points])
             self.CLOCK.tick(FPS)
+
+
 
 
 if __name__ == "__main__":

@@ -36,11 +36,11 @@ class QuestionPopup:
             self.screen.fill(feedback_color)
 
             # Render feedback text
-            feedback_text = self.font.render("Correct!" if self.is_correct else "Incorrect!", True, (255, 255, 255))
+            feedback_text = self.font.render("Pareizi!" if self.is_correct else "Nepareizi!", True, (255, 255, 255))
             feedback_rect = feedback_text.get_rect(center=(400, 380))
             self.screen.blit(feedback_text, feedback_rect)
 
-            points_text = self.font.render(f"Points awarded: {self.points_awarded}", True, (0, 0, 0))
+            points_text = self.font.render(f"Piešķirtie punkti: {self.points_awarded}", True, (0, 0, 0))
             points_rect = points_text.get_rect(center=(400, 400))
             self.screen.blit(points_text, points_rect)
 
