@@ -22,8 +22,8 @@ class Game:
             lock_rect.topleft = (self.goal_cell.x * self.tile, self.goal_cell.y * self.tile)
             screen.blit(lock_text, lock_rect)
         else:
-            # Add the gate image when all pieces are collected
-            img_path = 'assets/gate.png'
+            # Add the full_cake image when all pieces are collected
+            img_path = 'assets/full_cake.png'
             img = pygame.image.load(img_path)
             img = pygame.transform.scale(img, (self.tile, self.tile))
             screen.blit(img, (self.goal_cell.x * self.tile, self.goal_cell.y * self.tile))
