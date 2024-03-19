@@ -9,6 +9,7 @@ class QuestionPopup:
         self.correct_answer = question["correct_answer"]
         self.answer_rects = []  # Rects for each answer variant
         self.is_correct = None  # Track if the answer is correct or incorrect
+        self.points_awarded = 0
 
     def show(self):
         # Clear the screen with white
@@ -39,6 +40,10 @@ class QuestionPopup:
             feedback_rect = feedback_text.get_rect(center=(400, 380))
             self.screen.blit(feedback_text, feedback_rect)
 
+            points_text = self.font.render(f"Points awarded: {self.points_awarded}", True, (0, 0, 0))
+            points_rect = points_text.get_rect(center=(400, 400))
+            self.screen.blit(points_text, points_rect)
+
         pygame.display.flip()
 
     def check_answer(self):
@@ -55,3 +60,6 @@ class QuestionPopup:
 
     def set_answer_state(self, is_correct):
         self.is_correct = is_correct  # Set the answer state (correct or incorrect)
+        if is_correct:
+            self.points_awarded += 1000
+            return self.points_awarded

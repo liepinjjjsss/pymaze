@@ -18,7 +18,7 @@ pygame.font.init()
 
 
 class Main:
-    def __init__(self, screen):
+    def __init__(self, screen, total_pieces):
         self.screen = screen
         self.font = pygame.font.Font(FONT, 20)
 
@@ -29,6 +29,8 @@ class Main:
         self.total_points = 0
         self.questions = load_questions("questions.json")
         self.question_popup = None
+        self.cake_points = {}
+        self.total_pieces = total_pieces  # Add total_pieces attribute
 
     def instructions(self):
         instructions1 = self.font.render('Use', True, self.message_color)
@@ -48,8 +50,13 @@ class Main:
         # draw maze
         [cell.draw(self.screen, tile) for cell in maze.grid_cells]
 
-        # add a goal point to reach
-        game.add_goal_point(self.screen)
+        # Draw either cake counter or gate image based on the number of cake pieces picked up
+        if game.collected_pieces < game.total_pieces:
+            counter_text = self.font.render(f"{game.collected_pieces}/{game.total_pieces}", True, ORANGE)
+            self.screen.blit(counter_text, (game.goal_cell.x * tile, game.goal_cell.y * tile))
+        else:
+            # All pieces of cake are picked up, so draw the gate image
+            game.add_goal_point(self.screen)
 
         # draw every player movement
         player.draw(self.screen)
@@ -138,7 +145,8 @@ class Main:
         cols, rows = frame_size[0] // tile, frame_size[-1] // tile
         maze = Maze(cols, rows)
         poi = PointsOfInterest(cols, rows)
-        game = Game(maze.grid_cells[-1], tile)
+        total_pieces = len(poi.generate_points())  # Get the total number of cake pieces
+        game = Game(maze.grid_cells[-1], tile, total_pieces)  # Pass total_pieces to the Game constructor
         player = Player(tile // 3, tile // 3)
         clock = Clock()
 
@@ -158,7 +166,7 @@ class Main:
                     pygame.quit()
                     sys.exit()
 
-                # if keys were pressed still
+                # Handle key events for player movement
                 if event.type == pygame.KEYDOWN:
                     if not self.game_over:
                         if event.key == pygame.K_LEFT:
@@ -171,7 +179,6 @@ class Main:
                             player.down_pressed = True
                         player.check_move(tile, maze.grid_cells, maze.thickness)
 
-                # if pressed key released
                 if event.type == pygame.KEYUP:
                     if not self.game_over:
                         if event.key == pygame.K_LEFT:
@@ -193,13 +200,12 @@ class Main:
                 poi.decrease_cake_value()
 
             # Check collision with points of interest
-
             for point in points:
                 if player.rect.colliderect(
                         pygame.Rect(point[0] * TILE_SIZE, point[1] * TILE_SIZE, TILE_SIZE, TILE_SIZE)):
                     points_gained = poi.remove_point(point)
-                    self.total_points += points_gained  # Update total points
-                    if points_gained > 0:  # Check if the player picked up a piece of cake
+
+                    if points_gained > 0:
                         question = select_question(self.questions)
                         self.question_popup = QuestionPopup(self.screen, question)
                         player_answer = None  # Reset player's answer
@@ -208,13 +214,21 @@ class Main:
                             pygame.display.flip()  # Update the display to show the question popup
                             player_answer = self.question_popup.check_answer()  # Wait for player's answer
 
-                        # Determine if the answer is correct or incorrect
                         is_correct = player_answer == self.question_popup.correct_answer
                         self.question_popup.set_answer_state(is_correct)
                         self.question_popup.show()  # Display the feedback based on the answer state
                         pygame.display.flip()  # Update the display to show the feedback
 
-                        # Delay for one second before closing the popup
+                        if is_correct:
+                            self.total_points += self.question_popup.points_awarded
+                            poi.reset_cake_value()
+                            self.total_points += points_gained
+                            game.collected_pieces += 1
+                        else:
+                            self.total_points = max(0, self.total_points - 250)
+                            new_point = poi.move_point_randomly()
+                            points.append(new_point)
+
                         start_time = pygame.time.get_ticks()
                         while pygame.time.get_ticks() - start_time < 1000:  # Wait for 1000 milliseconds (1 second)
                             pass  # Do nothing during the delay
@@ -224,14 +238,22 @@ class Main:
                         else:
                             print("Incorrect")
 
-            if game.is_game_over(player):
-                self.game_over = True
-                player.left_pressed = False
-                player.right_pressed = False
-                player.up_pressed = False
-                player.down_pressed = False
+            poi.decrease_cake_value()
 
-            self._draw(maze, tile, player, game, clock, poi, [points])
+            # Check if all cake pieces are picked up
+            if len(points) == 0 and not self.game_over:
+                if game.is_game_over(player):
+                    self.game_over = True
+                    player.left_pressed = False
+                    player.right_pressed = False
+                    player.up_pressed = False
+                    player.down_pressed = False
+                    self.screen.blit(game.message(), (610, 120))
+                    pygame.display.flip()
+                    pygame.time.wait(2000)
+                    self.running = False
+
+            self._draw(maze, TILE_SIZE, player, game, clock, poi, [points])
             self.CLOCK.tick(FPS)
 
 
@@ -242,7 +264,9 @@ if __name__ == "__main__":
     screen = pygame.display.set_mode(screen)
     pygame.display.set_caption("Maze")
 
-    game = Main(screen)
+    total_pieces = NUMBER_OF_POINTS  # Use the value from the configs file
+    game = Main(screen, total_pieces)
     game.intro_screen()
     sleep(0.2)
     game.main(window_size, TILE_SIZE)
+
