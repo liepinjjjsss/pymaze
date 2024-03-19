@@ -43,7 +43,53 @@
                 "d. Tie, pa jūras krastu, skrien tik kilometrus, cik Latvijai togad paliek gadu"
             ],
             "correct_answer": "a"
+        },
+        {
+            "title": "Liepājas izcilākie mūziķi",
+            "question": "Kura no šīm grupām nav nākusi no Liepājas?",
+            "answers": [
+                "a. Remix",
+                "b. Tumsa",
+                "c. Credo",
+                "d. Musiqq"
+            ],
+            "correct_answer": "a"
+        },
+        {
+            "title": "Liepājas tramvajs",
+            "question": "Kurš fakts par Liepājas tramvaju nav patiess?",
+            "answers": [
+                "a. Liepāja bija pirmā pilsēta visā Baltijā, kur sāka kursēt tramvajs",
+                "b. Kopējais maršruta līnijas garums ir 15,4 kilometri",
+                "c. Kopējais tramvaju pieturu skaits ir 36",
+                "d. Kopējais pasažieru skaits 2019. gadā bija ap 1,9 miljoniem"
+            ],
+            "correct_answer": "d"
+        },
+        {
+            "title": "Liepājas festivāli",
+            "question": "Kurš mākslinieks nebija redzams uz Liepājas pēdas Latvijā skatuves?",
+            "answers": [
+                "a. Aija Andrejeva",
+                "b. Zigfrīds Muktupāvels",
+                "c. Ivo Fomins",
+                "d. Jānis Aišpurs"
+            ],
+            "correct_answer": "c"
+        },
+        {
+            "title": "Liepājas menciņš",
+            "question": "Kuros no šīm vietām nevar nogaršot “Liepājas menciņu”",
+            "answers": [
+                "a. Picērijā 'Čilli Pizza' Klaipēdas ielā",
+                "b. Restoranā 'Pastnieka mājā'",
+                "c. Restorānā 'Olive'",
+                "d. Visos iepriekš minētajos restorānos ir nogaršojams 'Liepājas menciņš'"
+            ],
+            "correct_answer": "d"
         }
+
+ 
 
     ]
 }
