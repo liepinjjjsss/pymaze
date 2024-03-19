@@ -32,14 +32,6 @@ class Main:
         self.cake_points = {}
         self.total_pieces = total_pieces  # Add total_pieces attribute
 
-    # def instructions(self):
-    #     instructions1 = self.font.render('Use', True, self.message_color)
-    #     instructions2 = self.font.render('Arrow Keys', True, self.message_color)
-    #     instructions3 = self.font.render('to Move', True, self.message_color)
-    #     self.screen.blit(instructions1, (655, 300))
-    #     self.screen.blit(instructions2, (610, 331))
-    #     self.screen.blit(instructions3, (630, 362))
-
     # draws all configs; maze, player, instructions, and time
     def _draw_score(self):
         score_text = self.font.render(f"Punkti: {self.total_points}", True, WHITE)
@@ -63,7 +55,6 @@ class Main:
         player.update()
 
         # clock, winning message
-        #self.instructions()
         if self.game_over:
             clock.stop_timer()
             self.screen.blit(game.message(), (610, 120))
@@ -143,15 +134,12 @@ class Main:
     def end_screen(self):
         self.screen.fill(ORANGE)
         self.screen.blit(self.font.render('Tu uzvarēji!!', True, ORANGE), (610, 120))
-        #pygame.display.flip()
-        #pygame.time.wait(2000)
         end_screen = True
         thank_you_message = self.font.render('Paldies par spēlēšanu!', True, BLACK)
         thank_you_message_rect = thank_you_message.get_rect(x=10, y=10)
         score_message = self.font.render(f'Tu ieguvi {self.total_points} punktus.', True, BLACK)
         score_message_rect = score_message.get_rect(x=10, y=40)
         exit_button = Button(10, 80, 350, 50, BLACK, WHITE, 'Iziet', 25)
-        #rules_button = Button(10, 150, 350, 50, BLACK, WHITE, 'Par spēli', 25)
 
         while end_screen:
             for event in pygame.event.get():
@@ -163,14 +151,10 @@ class Main:
             if exit_button.is_pressed(mouse_pos, mouse_pressed):
                 pygame.quit()
                 sys.exit()
-            # if rules_button.is_pressed(mouse_pos, mouse_pressed):
-            #     self.rules()
-            #     end_screen = False
 
             self.screen.blit(thank_you_message, thank_you_message_rect)
             self.screen.blit(score_message, score_message_rect)
             self.screen.blit(exit_button.image, exit_button.rect)
-            #self.screen.blit(rules_button.image, rules_button.rect)
             self.CLOCK.tick(FPS)
             pygame.display.update()
 
