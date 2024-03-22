@@ -69,11 +69,10 @@ class Main:
         self.game_over = False
         self.CLOCK = pygame.time.Clock()
         self.total_points = 0
-        self.questions = load_questions("questions.json")
+        self.questions = load_questions("C:/Users/LVG1702/Documents/pyexcell/pymaze/questions.json")
         self.question_popup = None
         self.cake_points = {}
         self.total_pieces = total_pieces  # Add total_pieces attribute
-        self.questions = load_questions("questions.json")
         self.asked_questions = set()
         self.asked_questions_ids = set()
 
@@ -229,6 +228,17 @@ class Main:
             self.CLOCK.tick(FPS)
             pygame.display.update()
 
+    def check_answer(self):
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = pygame.mouse.get_pos()
+                for index, answer_rect in enumerate(self.answer_rects):
+                    if answer_rect.collidepoint(mouse_pos):
+                        return chr(ord('a') + index)  # Convert index to corresponding letter ('a', 'b', 'c', 'd')
+
+        return None  # Return None if no answer option was clicked
+
+
 
 
     # main game loop
@@ -253,9 +263,28 @@ class Main:
             self.screen.fill(pygame.Color(BROWN), (603, 0, 752, 752))
 
             for event in pygame.event.get():
+                print(event)
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                
+                if displaying_question:
+                # Handle events specific to the question popup
+                # For example, check for mouse clicks on answer variants
+                # and call the check_answer method of the question popup
+                # Also, handle events to close the popup if needed
+                    pass
+                else:
+                # Handle events for player movement and other main game events
+                    if event.type == pygame.KEYDOWN:
+                        if not self.game_over:
+                        # Handle player movement key events
+                            pass
+                    elif event.type == pygame.KEYUP:
+                        if not self.game_over:
+                        # Handle player movement key release events
+                            pass
+
 
                 # Handle key events for player movement
                 if event.type == pygame.KEYDOWN:
@@ -364,7 +393,8 @@ class Main:
 
         # Find the corresponding question object
         selected_question = next(question for question in self.questions if question["id"] == selected_question_id)
-        print(f"Selected question: {selected_question['id']} - {selected_question['question']}")
+        # print(f"Selected question: {selected_question['id']} - {selected_question['question']}")
+
 
         return selected_question
 

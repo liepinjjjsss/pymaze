@@ -8,7 +8,7 @@ class PointsOfInterest:
         self.rows = rows
         self.thickness = WALL_THICKNESS
         self.point_tile = []
-        self.point_image = pygame.image.load("assets/cake_piece.png")  # Load the image
+        self.point_image = pygame.image.load("C:/Users/LVG1702/Documents/pyexcell/pymaze/assets/cake_piece.png")  # Load the image
         self.point_image = pygame.transform.scale(self.point_image, (POINT_SIZE*2, POINT_SIZE*2))  # Scale the image
         self.cake_value = 1000  # Initial value of the cake
         self.last_decrease_time = pygame.time.get_ticks()  # Track the last time the cake value was decreased

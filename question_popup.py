@@ -62,7 +62,7 @@ class QuestionPopup:
         # Render the answer variants
         answer_y = 250
         for index, answer_variant in enumerate(self.question["answers"]):
-            wrapped_answer_variant = wrap_text(answer_variant, self.font, 600)
+            wrapped_answer_variant = self.wrap_text(answer_variant, 800)
             for line in wrapped_answer_variant:
                 answer_text = self.font.render(line, True, (0, 0, 0))
                 answer_rect = answer_text.get_rect(center=(400, answer_y))
@@ -102,4 +102,3 @@ class QuestionPopup:
         self.is_correct = is_correct  # Set the answer state (correct or incorrect)
         if is_correct:
             self.points_awarded += 1000
-            return self.points_awarded

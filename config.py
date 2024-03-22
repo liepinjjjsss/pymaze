@@ -1,5 +1,5 @@
 FPS = 60
-FONT = "assets/PressStart.ttf"
+FONT = "C:/Users/LVG1702/Documents/pyexcell/pymaze/assets/PressStart.ttf"
 WALL_THICKNESS = 4
 TILE_SIZE = 30
 POINT_SIZE = 10 # For now that we don't have cake, we use dots
