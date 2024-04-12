@@ -87,7 +87,7 @@ class Main:
 
     # draws all configs; maze, player, instructions, and time
     def _draw_score(self):
-        score_text = self.font.render(f"Score: {self.total_points}", True, WHITE)
+        score_text = self.font.render(f"Punkti: {self.total_points}", True, WHITE)
         score_rect = score_text.get_rect()
         score_rect.topleft = (610, 10)  # Set the top-left corner of the text to (10, 10)
         self.screen.blit(score_text, score_rect)
@@ -111,7 +111,7 @@ class Main:
         self.instructions()
         if self.game_over:
             clock.stop_timer()
-            self.screen.blit(game.message(), (610, 120))
+            self.end_screen()
         else:
             clock.update_timer()
         self.screen.blit(clock.display_timer(), (605, 200))
@@ -137,8 +137,33 @@ class Main:
                 current_line = word
 
         wrapped_lines.append(current_line)
-
         return wrapped_lines
+
+
+    def end_screen(self):
+        self.screen.fill(ORANGE)
+        end_screen = True
+        thank_you_message = self.font.render('Tu uzvarēji!', True, BLACK)
+        thank_you_message_rect = thank_you_message.get_rect(x=10, y=10)
+        score_message = self.font.render(f'Tu ieguvi {self.total_points} punktus.', True, BLACK)
+        score_message_rect = score_message.get_rect(x=10, y=40)
+        exit_button = Button(10, 80, 350, 50, BLACK, WHITE, 'Iziet', 25)
+
+        while end_screen:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+            mouse_pos = pygame.mouse.get_pos()
+            mouse_pressed = pygame.mouse.get_pressed()
+            if exit_button.is_pressed(mouse_pos, mouse_pressed):
+                pygame.quit()
+
+            self.screen.blit(thank_you_message, thank_you_message_rect)
+            self.screen.blit(score_message, score_message_rect)
+            self.screen.blit(exit_button.image, exit_button.rect)
+            self.CLOCK.tick(FPS)
+            pygame.display.update()
 
     def rules(self):
         screen.fill(ORANGE)
@@ -332,9 +357,7 @@ class Main:
                         while player_answer is None:
                             self.question_popup.show()  # Display the question popup
                             pygame.display.flip()  # Update the display to show the question popup
-                            #self.CLOCK.tick(FPS)
                             player_answer = self.question_popup.check_answer()  # Wait for player's answer
-                            #print("entered question")
 
                         is_correct = player_answer == self.question_popup.correct_answer
                         self.question_popup.set_answer_state(is_correct)
@@ -359,11 +382,6 @@ class Main:
                         while pygame.time.get_ticks() - start_time < 1000:  # Wait for 1000 milliseconds (1 second)
                             pass  # Do nothing during the delay
 
-                        if is_correct:
-                            print("Correct")
-                        else:
-                            print("Incorrect")
-
             poi.decrease_cake_value()
 
             # Check if all cake pieces are picked up
@@ -374,9 +392,6 @@ class Main:
                     player.right_pressed = False
                     player.up_pressed = False
                     player.down_pressed = False
-                    self.screen.blit(game.message(), (610, 120))
-                    pygame.display.flip()
-                    pygame.time.wait(2000)
                     self.running = False
 
             self._draw(maze, TILE_SIZE, player, game, clock, poi, [points])
@@ -395,7 +410,6 @@ class Main:
 
         # Find the corresponding question object
         selected_question = next(question for question in self.questions if question["id"] == selected_question_id)
-        # print(f"Selected question: {selected_question['id']} - {selected_question['question']}")
 
 
         return selected_question
