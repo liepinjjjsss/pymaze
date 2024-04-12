@@ -45,6 +45,50 @@
             "correct_answer": "a"
         },
         {
+            "title": "Izskrien Latviju Liepājā",
+            "question": "Kādi cilvēki var piedalīties izskrien liepāju?",
+            "answers": [
+                "a. Tikai pieaugušie",
+                "b. Tikai uzaicinātie",
+                "c. Pasākuma vadītāji un to ģimenes",
+                "d. Pilnīgi visi, kuri vēlas"
+            ],
+            "correct_answer": "d"
+        },
+        {
+            "title": "Liepāja un Eiropa",
+            "question": "Par kura gada Eiropas kultūras galvaspilsētu ir pasludināta Liepāja?",
+            "answers": [
+                "a. 2027",
+                "b. 2024",
+                "c. 2028",
+                "d. 2025"
+            ],
+            "correct_answer": "a"
+        },
+        {
+            "title": "Izskrien Latviju Liepājā",
+            "question": "Cik garš ir 'Izskrien Latviju Liepājā' maršruts",
+            "answers": [
+                "a. 8.5km",
+                "b. 106km",
+                "c. 21km",
+                "d. 42km"
+            ],
+            "correct_answer": "a"
+        },
+        {
+            "title": "Liepājas pēdas Latvijā",
+            "question": "Kādu svētku piemiņai tiek organizēts pasākums 'Liepājas pēdas Latvijā'?",
+            "answers": [
+                "a. Starptautiskā bērnu aizsardzības diena ",
+                "b. Eiropas diena",
+                "c. Latvijas Republikas Neatkarības atjaunošanas diena",
+                "d. Cēsu kauju atceres diena"
+            ],
+            "correct_answer": "c"
+        },
+        {
             "title": "Liepājas izcilākie mūziķi",
             "question": "Kura no šīm grupām nav nākusi no Liepājas?",
             "answers": [
@@ -60,7 +104,7 @@
             "question": "Kurš fakts par Liepājas tramvaju nav patiess?",
             "answers": [
                 "a. Liepāja bija pirmā pilsēta visā Baltijā, kur sāka kursēt tramvajs",
-                "b. Kopējais maršruta līnijas garums ir 15,4 kilometri",
+                "b. Kopējais maršruta līnijas garums ir 14,8 kilometri",
                 "c. Kopējais tramvaju pieturu skaits ir 36",
                 "d. Kopējais pasažieru skaits 2019. gadā bija ap 1,9 miljoniem"
             ],

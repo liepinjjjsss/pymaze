@@ -22,14 +22,11 @@ class Game:
             lock_rect.topleft = (self.goal_cell.x * self.tile, self.goal_cell.y * self.tile)
             screen.blit(lock_text, lock_rect)
         else:
-            # Add the full_cake image when all pieces are collected
-            img_path = 'assets/full_cake.png'
+            # Add the gate image when all pieces are collected
+            img_path = 'pymaze/assets/full_cake.png'
             img = pygame.image.load(img_path)
             img = pygame.transform.scale(img, (self.tile, self.tile))
             screen.blit(img, (self.goal_cell.x * self.tile, self.goal_cell.y * self.tile))
-
-    def message(self):
-        return self.font.render('Tu uzvarēji!!', True, ORANGE)
 
     def is_game_over(self, player):
         goal_cell_abs_x, goal_cell_abs_y = self.goal_cell.x * self.tile, self.goal_cell.y * self.tile
