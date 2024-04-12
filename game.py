@@ -23,13 +23,13 @@ class Game:
             screen.blit(lock_text, lock_rect)
         else:
             # Add the gate image when all pieces are collected
-            img_path = 'C:/Users/LVG1702/Documents/pyexcell/pymaze/assets/full_cake.png'
+            img_path = 'pymaze/assets/full_cake.png'
             img = pygame.image.load(img_path)
             img = pygame.transform.scale(img, (self.tile, self.tile))
             screen.blit(img, (self.goal_cell.x * self.tile, self.goal_cell.y * self.tile))
 
     def message(self):
-        return self.font.render('You Win!!', True, ORANGE)
+        return self.font.render('Uzvara!', True, ORANGE)
 
     def is_game_over(self, player):
         goal_cell_abs_x, goal_cell_abs_y = self.goal_cell.x * self.tile, self.goal_cell.y * self.tile

@@ -69,7 +69,7 @@ class Main:
         self.game_over = False
         self.CLOCK = pygame.time.Clock()
         self.total_points = 0
-        self.questions = load_questions("C:/Users/LVG1702/Documents/pyexcell/pymaze/questions.json")
+        self.questions = load_questions("pymaze/questions.json")
         self.question_popup = None
         self.cake_points = {}
         self.total_pieces = total_pieces  # Add total_pieces attribute
@@ -263,7 +263,6 @@ class Main:
             self.screen.fill(pygame.Color(BROWN), (603, 0, 752, 752))
 
             for event in pygame.event.get():
-                print(event)
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
@@ -329,10 +328,13 @@ class Main:
                         question = self.select_unique_question(self.asked_questions)
                         self.question_popup = QuestionPopup(self.screen, question)
                         player_answer = None  # Reset player's answer
+                        
                         while player_answer is None:
                             self.question_popup.show()  # Display the question popup
                             pygame.display.flip()  # Update the display to show the question popup
+                            #self.CLOCK.tick(FPS)
                             player_answer = self.question_popup.check_answer()  # Wait for player's answer
+                            #print("entered question")
 
                         is_correct = player_answer == self.question_popup.correct_answer
                         self.question_popup.set_answer_state(is_correct)

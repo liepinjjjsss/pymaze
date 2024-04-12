@@ -59,6 +59,9 @@ class QuestionPopup:
             self.screen.blit(question_text, question_rect)
             y_position += self.font.get_linesize()
 
+        # Clear answer_rects for each new render
+        self.answer_rects = []
+
         # Render the answer variants
         answer_y = 250
         for index, answer_variant in enumerate(self.question["answers"]):
@@ -67,6 +70,7 @@ class QuestionPopup:
                 answer_text = self.font.render(line, True, (0, 0, 0))
                 answer_rect = answer_text.get_rect(center=(400, answer_y))
                 self.screen.blit(answer_text, answer_rect)
+                self.answer_rects.append(answer_rect)  # Add answer_rect to the list
                 answer_y += 40  # Adjust vertical position for the next line  # Adjust vertical position for the next answer variant
 
         # Render feedback text based on the answer state
