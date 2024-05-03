@@ -69,7 +69,7 @@ class Main:
         self.game_over = False
         self.CLOCK = pygame.time.Clock()
         self.total_points = 0
-        self.questions = load_questions("pymaze/questions.json")
+        self.questions = load_questions("./questions.json")
         self.question_popup = None
         self.cake_points = {}
         self.total_pieces = total_pieces  # Add total_pieces attribute

@@ -1,5 +1,5 @@
 FPS = 60
-FONT = "pymaze/assets/PressStart.ttf"
+FONT = "./assets/PressStart.ttf"
 WALL_THICKNESS = 4
 TILE_SIZE = 30
 POINT_SIZE = 10
